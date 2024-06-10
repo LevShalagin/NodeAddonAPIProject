@@ -1,6 +1,6 @@
 ﻿#include <napi.h>
 
-Napi::Value getData(const Napi::CallbackInfo& info) {
+Napi::Value getDate(const Napi::CallbackInfo& info) {
     Napi::Env env = info.Env();
 
     if (info.Length() < 2) {
@@ -9,12 +9,16 @@ Napi::Value getData(const Napi::CallbackInfo& info) {
         return env.Null();
     }
 
-    char *date, *event, *result;
+    char *date = (char*)malloc(1500);
+    char *event = (char*)malloc(1500);
+    char *result;
 
     strcpy(date, info[0].As<Napi::String>().Utf8Value().c_str());
     strcpy(event, info[1].As<Napi::String>().Utf8Value().c_str());
 
-    sprintf(result, "%s %s", date, event);
+    sprintf(result, "<tr><td>%s</td><td>%s</td></tr>", date, event);
+
+    printf("C: %s", result);
 
     Napi::String str = Napi::String::New(env, result);
 
@@ -22,7 +26,7 @@ Napi::Value getData(const Napi::CallbackInfo& info) {
 }
 
 Napi::Object Init(Napi::Env env, Napi::Object exports) {
-  exports.Set(Napi::String::New(env, "get_data"), Napi::Function::New(env, getData));
+  exports.Set(Napi::String::New(env, "get_date"), Napi::Function::New(env, getDate));
   return exports;
 }
 
