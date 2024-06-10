@@ -11,14 +11,14 @@ Napi::Value getDate(const Napi::CallbackInfo& info) {
 
     char *date = (char*)malloc(1500);
     char *event = (char*)malloc(1500);
-    char *result;
+    char *result = (char*)malloc(1500);
 
     strcpy(date, info[0].As<Napi::String>().Utf8Value().c_str());
     strcpy(event, info[1].As<Napi::String>().Utf8Value().c_str());
 
     sprintf(result, "<tr><td>%s</td><td>%s</td></tr>", date, event);
 
-    printf("C: %s", result);
+    printf("C: %s\n", result);
 
     Napi::String str = Napi::String::New(env, result);
 
