@@ -6,7 +6,6 @@ console.log("JS: " + addon.get_date("01/01/2025", "Happy new year!"));
 console.log("------------Test------------");
 //////////////////////////////////////////////////
 
-
 function addDate() {
     
     let date = prompt("Введите дату").toString();
