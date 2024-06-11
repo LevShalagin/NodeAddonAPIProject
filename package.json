@@ -2,12 +2,13 @@
   "main": "lib/binding.js",
   "dependencies": {
     "bindings": "^1.5.0",
-    "electron": "^31.0.0",
+    "gatsby": "^4.25.9",
     "node-addon-api": "^1.1.0"
   },
   "scripts": {
     "test": "node index.js",
-    "install": "node-gyp rebuild"
+    "install": "node-gyp rebuild",
+    "start": "main.html"
   },
   "gypfile": true,
   "name": "nodeaddonapiproject",
