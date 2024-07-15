@@ -4,8 +4,8 @@
 
 class ToDoPlanner : public Napi::ObjectWrap<ToDoPlanner> {
  public:
-    
-    std::string _date, _event;
+    std::string _event;
+    std::string _date;
     int _index;
 
     static Napi::Object Init(Napi::Env env, Napi::Object exports);
