@@ -1,4 +1,5 @@
-#include "obj.h"
+#include "rowObj.h"
+
 #include <iostream>
 #include <string>
 
@@ -56,7 +57,7 @@ Napi::Object ToDoPlanner::Init(Napi::Env env, Napi::Object exports) {
 ToDoPlanner::ToDoPlanner(const Napi::CallbackInfo& info) : Napi::ObjectWrap<ToDoPlanner>(info) {
 
   Napi::Env env = info.Env();
-  
+
   std::locale::global(std::locale("Russian"));
   SetConsoleOutputCP(1251);
   
