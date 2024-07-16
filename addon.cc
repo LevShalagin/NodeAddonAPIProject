@@ -79,7 +79,7 @@ ToDoPlanner::ToDoPlanner(const Napi::CallbackInfo& info) : Napi::ObjectWrap<ToDo
     std::getline(std::cin, this->_date);
     
     printf("Write an event(max.50): ");
-    std::getline(std::cin, this->_date);
+    std::getline(std::cin, this->_event);
   }
 
   if (info.Length() != 3 && info.Length() != 1) {
@@ -131,8 +131,8 @@ void ToDoPlanner::SetIndex(const Napi::CallbackInfo& info) {
 void ToDoPlanner::Print(const Napi::CallbackInfo& info) {
   this->_event = ConvertUTF8ToCP1251(this->_event);
   printf("%03d|%10s|%s\n", this->_index, this->_date, this->_event);
-  printf("capacity: %d\n", this->_event.capacity());
-  printf("length: %d\n\n", this->_event.length());
+  // printf("capacity: %d\n", this->_event.capacity());
+  // printf("length: %d\n\n", this->_event.length());
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
