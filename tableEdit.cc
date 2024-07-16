@@ -12,7 +12,7 @@ Napi::String tableEdit(const Napi::CallbackInfo& info) {
 
 Napi::String getCommand(const Napi::CallbackInfo& info) {
   std::string command;
-  printf("Write command(add/del): ");
+  printf("%s", info[0].As<Napi::String>().Utf8Value().c_str());
 
   std::getline(std::cin, command);
   if(command == "add") {

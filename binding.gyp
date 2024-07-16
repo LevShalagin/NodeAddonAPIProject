@@ -4,7 +4,7 @@
       "target_name": "rowObject",
       "cflags!": [ "-fno-exceptions" ],
       "cflags_cc!": [ "-fno-exceptions" ],
-      "sources": [ "addon.cc" ],
+      "sources": [ "rowObj.cc" ],
       "include_dirs": [
         "<!@(node -p \"require('node-addon-api').include\")"
       ],

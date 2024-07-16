@@ -48,7 +48,9 @@ Napi::Object ToDoPlanner::Init(Napi::Env env, Napi::Object exports) {
   Napi::FunctionReference* constructor = new Napi::FunctionReference();
   *constructor = Napi::Persistent(func);
   env.SetInstanceData(constructor);
+
   exports.Set("ToDoPlanner", func);
+
   return exports;
 }
 
@@ -80,6 +82,9 @@ ToDoPlanner::ToDoPlanner(const Napi::CallbackInfo& info) : Napi::ObjectWrap<ToDo
     
     printf("Write an event(max.50): ");
     std::getline(std::cin, this->_event);
+
+    this->_date = Napi::String::New(info.Env(), this->_date).As<Napi::String>().Utf8Value();
+    this->_event = Napi::String::New(info.Env(), this->_event).As<Napi::String>().Utf8Value();
   }
 
   if (info.Length() != 3 && info.Length() != 1) {
@@ -130,7 +135,7 @@ void ToDoPlanner::SetIndex(const Napi::CallbackInfo& info) {
 
 void ToDoPlanner::Print(const Napi::CallbackInfo& info) {
   this->_event = ConvertUTF8ToCP1251(this->_event);
-  printf("%03d|%10s|%s\n", this->_index, this->_date, this->_event);
+  printf("%03d|%10s|    %s\n", this->_index, this->_date, this->_event);
   // printf("capacity: %d\n", this->_event.capacity());
   // printf("length: %d\n\n", this->_event.length());
 }
